@@ -15,7 +15,10 @@ Complète les TODO ci-dessous.
 import socket
 import json
 from datetime import datetime
+import time 
 
+
+debut = time.time()
 HOST = "127.0.0.1"
 PORT = 8888
 
@@ -73,12 +76,16 @@ def handle_request(request: dict) -> bytes:
     # TODO 1 : Ajoute une route /time
     # Elle doit retourner {"heure": "2026-06-29T10:30:00", "timestamp": 1234567890}
     # Utilise datetime.utcnow() et datetime.utcnow().timestamp()
-
+    elif path == "/time":
+        data = {"heure":datetime.utcnow().isoformat(), "timestamp": datetime.utcnow().timestamp()}
+        return make_response(200, "OK", json.dumps(data), "application/json")
     # TODO 2 : Ajoute une route /status
     # Elle retourne {"status": "ok", "uptime_seconds": X}
     # X = nombre de secondes depuis le démarrage du serveur
     # Indice : utilise time.time() au démarrage et fais la soustraction
-
+    elif path == "/status":
+        data = {"status": "ok", "uptime_seconds":datetime.utcnow().timestamp() }
+        return make_response(200, "OK", json.dumps(data), "application/json")
     # TODO 3 : Ajoute une route /echo
     # Elle retourne toute la requête reçue sous forme de JSON
     # {"method": "GET", "path": "/echo", "headers": {...}}
