@@ -90,6 +90,13 @@ def handle_request(request: dict) -> bytes:
     # TODO 3 : Ajoute une route /echo
     # Elle retourne toute la requête reçue sous forme de JSON
     # {"method": "GET", "path": "/echo", "headers": {...}}
+    elif path == "/echo":
+        maintenant = time.time()
+        data = {"method": "GET", "path": "/echo", "headers": {"host": "localhost:8080",
+        "accept": "application/json",
+        "user-agent": "curl/7.88",
+        "x-mon-header": "valeur-test",}}
+        return make_response(200, "OK", json.dumps(data), "application/json")
 
     # TODO 4 (bonus) : Parse les query parameters
     # Pour /greet?name=Alice, retourne {"message": "Bonjour Alice !"}
