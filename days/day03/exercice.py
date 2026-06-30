@@ -102,6 +102,12 @@ def handle_request(request: dict) -> bytes:
     # Pour /greet?name=Alice, retourne {"message": "Bonjour Alice !"}
     # Indice : le path ressemblera à "/greet?name=Alice"
     # Utilise path.split("?") pour séparer chemin et paramètres
+    if "?" in path : 
+        chemin, name = path.split("?")
+        _, name = name.split("=")
+        data = {"message": "Bonjour Alice !"}
+        return make_response(200, "OK", json.dumps(data), "application/json")
+    
 
     else:
         body = json.dumps({"error": "Route introuvable", "path": path})
