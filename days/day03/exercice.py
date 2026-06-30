@@ -84,7 +84,8 @@ def handle_request(request: dict) -> bytes:
     # X = nombre de secondes depuis le démarrage du serveur
     # Indice : utilise time.time() au démarrage et fais la soustraction
     elif path == "/status":
-        data = {"status": "ok", "uptime_seconds":datetime.utcnow().timestamp() }
+        maintenant = time.time()
+        data = {"status": "ok", "uptime_seconds":maintenant - debut }
         return make_response(200, "OK", json.dumps(data), "application/json")
     # TODO 3 : Ajoute une route /echo
     # Elle retourne toute la requête reçue sous forme de JSON
