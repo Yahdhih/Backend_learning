@@ -102,6 +102,9 @@ def compter_mots(phrase):
     {'le': 2, 'chat': 1, 'et': 1, 'chien': 1}
     """
     # TODO : split la phrase, convertir en minuscules, compter avec un dict
+    phrase_lower = phrase.lower()
+    list = phrase_lower.split()
+    return {i : list.count(i) for i in list}
     pass
 
 
