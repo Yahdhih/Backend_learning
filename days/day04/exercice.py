@@ -47,6 +47,11 @@ def construire_index(utilisateurs):
     {1: 'Alice', 2: 'Bob'}
     """
     # TODO
+    dictionnaire = {}
+    for i in utilisateurs : 
+        a = i["id"]
+        dictionnaire[a] = i["nom"]
+    return dictionnaire
     pass
 
 
