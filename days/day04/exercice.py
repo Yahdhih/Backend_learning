@@ -84,6 +84,10 @@ def construire_url(base, **params):
     """
     # TODO : si pas de params, retourner base seul
     # sinon, construire "base?key1=val1&key2=val2" (trié par clé)
+    if not params:
+        return base
+    query = "&".join(f"{cle}={params[cle]}" for cle in sorted(params))
+    return f"{base}?{query}"
     pass
 
 
