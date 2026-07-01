@@ -116,6 +116,7 @@ def inverser_dict(d):
     {1: 'a', 2: 'b', 3: 'c'}
     """
     # TODO : dict comprehension
+    return {d[key] : key for key in d }
     pass
 
 
