@@ -66,7 +66,9 @@ def moyenne(*nombres):
     >>> moyenne(5)
     5.0
     """
-    # TODO
+    # TODO 
+    return sum(nombres) / len(nombres)
+
     pass
 
 
