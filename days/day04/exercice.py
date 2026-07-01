@@ -20,6 +20,7 @@ def filtrer_positifs(nombres):
     []
     """
     # TODO : une list comprehension ici
+    return [i for i in nombres if i > 0]
     pass
 
 
