@@ -23,6 +23,15 @@ from functools import wraps
 #   # Affiche : "calcul_lent a pris 0.100s"
 
 def timer(func):
+    @wraps(func)
+    def wrapper(*arg, **kwrags):
+        debut = time.time()
+        resultat = func(*arg,**kwrags)
+        fin = time.time()
+        elapsed = fin - debut
+        print(f"{func.__name__} a pris {elapsed:.3f}s")
+        return resultat
+    return wrapper
     # TODO : implémente le décorateur
     # Utilise time.time() avant et après l'appel
     # Affiche : f"{func.__name__} a pris {elapsed:.3f}s"
