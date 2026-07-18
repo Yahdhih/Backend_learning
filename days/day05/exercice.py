@@ -53,6 +53,15 @@ def timer(func):
 #   # ← 7
 
 def logger(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        args_str = ", ".join([str(a) for a in args])
+        print(f"→ {func.__name__}({args_str})")
+        resultat = func(*args, **kwargs)
+        print(f"← {resultat}")
+        return resultat
+    return wrapper
+
     # TODO
     # Affiche "→ nom(args, kwargs)" avant l'appel
     # Affiche "← résultat" après l'appel
