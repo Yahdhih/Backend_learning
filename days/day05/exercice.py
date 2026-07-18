@@ -81,6 +81,19 @@ def logger(func):
 # Si elle échoue n fois : laisser la dernière exception se propager
 
 def retry(n):
+    def decorateur(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            derniere_exception = None
+            for tentative in range(n):
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    derniere_exception = e
+            raise derniere_exception
+        return wrapper
+    return decorateur
+  
     # TODO : 3 couches (argument → decorateur → wrapper)
     pass
 
